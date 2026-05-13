@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+    color: #222222;
+    background-color: #000000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+}
+
+/* 레이아웃 구성 */
+
+section .inner {
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+section .inner h1 {
+    color: #fff;
+    font-size: 4rem;
+    text-align: center;
+}
+
+section .inner .about-me {
+    background-color: #fff2f8;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+/* 3컬럼 구현을 위한 Flexbox 설정 */
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    border-top: 1px dashed #999999; /* 기존 column-rule 느낌을 상단 선으로 대체 */
+    padding-top: 20px;
+}
+
+/* 제목 스타일 유지 */
+section .inner .about-me h2 {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+section .inner .about-me h2:before {
+    content: '';
+    position: absolute;
+    background-color: rgb(238, 82, 160);
+    width: 270px;
+    height: 30px;
+    z-index: -1;
+    transform: translateX(-40px);
+}
+
+/* 각 컬럼 너비 설정 */
+.col-img { flex: 0.8; }
+.col-text { flex: 1.5; border-right: 1px dashed #999999; padding-right: 40px; }
+.col-tags { flex: 0.7; display: flex; flex-direction: column; gap: 15px; }
+
+section .inner .about-me img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* 태그 스타일 */
+.tag {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #ae914f; /* 연지색 포인트 컬러 */
+    color: #ae914f;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* 반응형 설정 */
+@media(max-width:1024px) {
+    section .inner { width: 95%; }
+    .about-content { flex-direction: column; }
+    .col-text { border-right: none; padding-right: 0; }
+    .col-tags { flex-direction: row; flex-wrap: wrap; }
+}
